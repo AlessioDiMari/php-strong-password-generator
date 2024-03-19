@@ -17,23 +17,15 @@
         // inserisco i caratteri possibili per creare la password in una variabile stringa
         $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=";
         // dichiaro la variabile password come una stringa vuota da popolare in seguito
-        $password = "":
+        $password = " ";
         for($i = 0; $i < $length; $i++){
             // aggiungo un carattere casuale dalla stringa characters a password
-            $password . = $characters[rand(0, strlen($characters) - 1)]
+            $password .= $characters[rand(0, strlen($characters) - 1)];
         }
 
         return $password;
 
-    }
-    
-
-    // creo un if per verificare che l'imput sia stato preso
-    if(isset($_GET['length'])){
-        $passLength = $_GET['length'];
-        echo "La password è lunga: " . $passLength;
-    }
-    
+    }    
     ?>
     
     <div class="container pt-5 ">
@@ -48,6 +40,21 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Genera!</button>
             </form>
+
+            <?php
+            // creo un if per verificare che l'imput sia stato preso
+            if(isset($_GET['length'])){
+                $passLength = $_GET['length'];
+                // dichiaro la password al click del button richiamando la funzione per generarla utilizzando come parametro sappLength
+                $password = generatePassword($passLength);
+                echo '<div class="container pt-3">';
+                echo '  <div class="alert alert-primary" role="alert">';
+                echo '      La tua password generata è: ' . $password;
+                echo '  </div>';
+                echo '</div>';
+                
+            }
+            ?>
         
         </div>
 
