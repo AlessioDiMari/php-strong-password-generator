@@ -10,9 +10,30 @@
 
 </head>
 <body data-bs-theme="dark">
+
+    <?php
+    
+    if(isset($_GET['length'])){
+        echo "ciaoo";
+    }
+    
+    ?>
     
     <div class="container pt-5 ">
         <h1>Password Generator</h1>
+
+        <div class="container p-3">
+
+            <form method="GET" action="index.php">
+                <div class="mb-3">
+                    <label for="pass-lenght">Quanti caratteri (da 5 a 20) deve essere lunga la tua password?</label>
+                    <input type="number" id="length" name="length" min="5" max="20" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Genera!</button>
+            </form>
+        
+        </div>
+
     </div>
 
 
